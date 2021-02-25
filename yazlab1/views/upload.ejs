@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+    
+
+<head> 
+        <!-- Meta -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+
+        <!-- Title -->
+        <title>..:: Kütüphane ::..</title>
+
+        <!-- Favicon -->
+        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        
+        <!-- Mobile Menu -->
+        <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
+        <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+        <!-- Stylesheet -->
+        <link href="style.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+
+    <body style="visibility: hidden;">
+        
+        <!-- Start: Header Section -->
+        <!-- Start: Header Section -->
+        <header id="header-v1" class="navbar-wrapper">
+          <div class="container">
+            <div class="row">
+              <nav class="navbar navbar-default">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="navbar-header">
+                      <div class="navbar-brand">
+                        <h1>
+                          <a href="/">
+                            <img src="images/libraria-logo-v1.png" alt="LIBRARIA" />
+                          </a>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <!-- Header Topbar -->
+                    <div class="header-topbar hidden-sm hidden-xs">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="topbar-info"></div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="topbar-links">
+                              <a <%if(auth==1){%>href="/account"<%}else{ %>href= "/admin"<% } %> > <i class="fa fa-lock"></i><%=uye["user_username"]%></a><br>
+                              <a href="/logout"><i class="fa fa-sign-out"></i>  Çıkış</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="navbar-collapse hidden-sm hidden-xs">
+                      <ul class="nav navbar-nav">
+                        <li class="dropdown ">
+                          
+                          <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/books">Kitaplık</a></a>
+                          </li>
+                        <%if (auth == 2) { %>
+                        <li class="dropdown">
+                        
+                          <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/admin">Yonetici Sayfasi</a></a>
+                        </li>
+                        <li class="dropdown active">
+                        
+                          <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/upload">Kitap Ekle</a></a>
+                        </li>
+                        <% }   %>
+                          
+                        
+                        <%if (auth == 1) { %>
+                        <li class="dropdown">
+                          <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/account">uyelik</a>
+                        </li>
+                        <li class="dropdown">
+                          <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/refund">Kitap Teslim</a>
+                        </li>
+                        <% }   %>
+                       
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="mobile-menu hidden-lg hidden-md">
+                  <a href="#mobile-menu"><i class="fa fa-navicon"></i></a>
+                  <div id="mobile-menu">
+                    <ul>
+                      <li class="mobile-title">
+                        <h4>Üyelik</h4>
+                        <a href="#" class="close"></a>
+                      </li>
+          
+                        <li>
+                          <a <%if(auth==1){%>href="/account"<%}else{ %>href= "/admin"<% } %> > <%=uye["user_username"]%></a>
+                        </li>
+                        <li>
+                          <a href="/logout">Çıkış</a>
+                        </li>
+                        
+                        <li class="mobile-title">
+                          <h4>Sayfalar</h4>
+                        </li>
+                        <li>
+                       <a href="/books">Kitaplık</a>
+                      </li>
+                      <%if (auth == 1) { %>
+                      <li>
+                        <a href="/refund">Kitap Teslim</a>
+    
+                      </li>
+                      <% }   %>
+                      <%if (auth == 2) { %>
+                        <li >
+                        
+                          <a  href="/admin">Yonetici Sayfasi</a></a>
+                        </li>
+                        <li >
+                        
+                          <a href="/upload">Kitap Ekle</a></a>
+                        </li>
+                        <% }   %>
+                        
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </header>
+        <!-- End: Header Section -->
+        
+        <!-- Start: Page Banner -->
+        <section class="page-banner services-banner">
+            <div class="container">
+                <div class="banner-header">
+                    <h2>Kitap Yukle</h2>
+                    <span class="underline center"></span>
+                    <p class="lead">Yeni kitap Ekleme paneli</p>
+                </div>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li>Kitap Yukle</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End: Page Banner -->
+        <!-- Start: Cart Checkout Section -->
+        <div id="content" class="site-content">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main">
+                    <div class="checkout-main">
+                        <div class="container">
+                          <div style="visibility: hidden; "id="errmsg" class="alert alert-danger" role="alert">
+                  
+                          </div>
+                          <div style="visibility: hidden; "id="ok" class="alert alert-success" role="alert">
+                  
+                          </div>
+                            <div class="row">
+                                <div class="cart-head">
+                                   
+                                <div class="col-md-12">
+                                    <article class="page type-page status-publish hentry">
+                                        <div class="entry-content">
+                                            <div class="woocommerce">
+
+                                                <form action="/upload" class="checkout woocommerce-checkout" method="post" id="formgonder" >
+                                                    
+                                                    <div class="row">
+                                                        <div id="customer_details">
+                                                            <div class="col-xs-12 col-sm-6">
+                                                                <div class="woocommerce-billing-fields">
+                                                                    <h2>Kitap  Bilgileri</h2>
+                                                                    <span class="underline left"></span>
+                                                                    <div class="row">
+                                                                        <div class="billing-address-box">
+                                                                          <div class="clear"></div>
+                                                                          <div id="autoisbnmode">
+                                                                            <div class="col-xs-12 col-sm-6">
+                                                                                <p id="billing_first_name_field" class="form-row form-row form-row-first">
+                                                                                    <input type="text" value=""  placeholder="Kitap Adı" id="kitap_name" name="kitap_name" class="input-text">
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-xs-12 col-sm-6">
+                                                                                <p id="billing_last_name_field" class="form-row form-row form-row-last validate-required">                                                                        
+                                                                                    <input type="text" value="" autocomplete="family-name" placeholder="Kitap Yazarı" id="kitap_author" name="kitap_author" class="input-text">
+                                                                                </p>
+                                                                            </div>
+                                                                          </div>
+                                                                            <div class="clear"></div>
+                                                                            <div class="col-xs-12 col-sm-6">
+                                                                                <p id="billing_company_field" class="form-row form-row form-row-wide">
+                                                                                    <label for="kitap_kapak">Kitap Kapagi</label>
+                                                                                    <img hidden id="kapaksrc" alt="No Image" />
+                                                                                    <input type="file" value="" autocomplete="organization" id="kitap_kapak"  class="input-file ">
+                                                                                    <input id="frontimage" type="hidden" name="kitap_imagefront" value=""/>
+                                                                                    <input id="isbnimage" type="hidden" name="kitap_imageisbn" value=""/>
+
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="col-xs-12 col-sm-6">
+                                                                                <p id="billing_company_field" class="form-row form-row form-row-wide">
+                                                                                    <label for="kitap_isbn">Kitap isbn</label>
+                                                                                    <img hidden id="imageSrc" alt="No Image" />
+                                                                                    <input type="file" value="" autocomplete="organization" id="kitap_isbn" class="input-file ">
+                                                                                </p>
+                                                                            </div>
+                                                                            <label  class="col-xs-12 col-sm-6 " for="canvasOutput">ISBN FOTO</label>
+                                                                            <canvas class="col-xs-12 col-sm-6 "id="canvasOutput" ></canvas>
+                                                                            <label class="col-xs-12 col-sm-6 " for="canvaskapak">Kitap Kapağı</label>
+                                                                            <canvas class="col-xs-12 col-sm-6 "id="canvaskapak" ></canvas>
+                                                                            <div class="clear"></div>
+                                                                            <div class="col-xs-12 col-sm-6">
+                                                                                <p id="billing_last_name_field" class="form-row form-row form-row-last validate-required">                                                                        
+                                                                                    <button id="gonderbutton" type="button"> gonder </button>
+                                                                                    </p>
+                                                                            </div>
+                                                                        </div>  
+                                                                    </div>
+                                                                    <div class="clear"></div>
+                                                                </div>
+                                                            </div>
+                                                         
+                                                            <div class="clearfix"></div>
+                                                        </div>	
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div><!-- .entry-content -->
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!-- End: Cart Checkout Section -->
+        <!-- Start: Footer -->
+        <footer class="site-footer">
+          <div class="sub-footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 pull-right">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End: Footer -->
+
+        <!-- jQuery Latest Version 1.x -->
+        <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+        
+        <!-- jQuery UI -->
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        
+        <!-- jQuery Easing -->
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        
+        <!-- Mobile Menu -->
+        <script type="text/javascript" src="js/mmenu.min.js"></script>
+        
+        <!-- Harvey - State manager for media queries -->
+        <script type="text/javascript" src="js/harvey.min.js"></script>
+        
+        <!-- Waypoints - Load Elements on View -->
+        <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+        <!-- Facts Counter -->
+        <script type="text/javascript" src="js/facts.counter.min.js"></script>
+
+        <!-- MixItUp - Category Filter -->
+        <script type="text/javascript" src="js/mixitup.min.js"></script>
+
+        <!-- Owl Carousel -->
+        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+        
+        <!-- Accordion -->
+        <script type="text/javascript" src="js/accordion.min.js"></script>
+        
+        <!-- Responsive Tabs -->
+        <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
+        
+        <!-- Responsive Table -->
+        <script type="text/javascript" src="js/responsive.table.min.js"></script>
+        
+        <!-- Masonry -->
+        <script type="text/javascript" src="js/masonry.min.js"></script>
+        
+        <!-- Carousel Swipe -->
+        <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
+        
+        <!-- bxSlider -->
+        <script type="text/javascript" src="js/bxslider.min.js"></script>
+        
+        <!-- Custom Scripts -->
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="opencv/uploadcv.js"></script>
+        <script async src="js/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+        <% if(error==1){ %> 
+          <script>
+            $(document).ready(function(){
+             document.getElementById("errmsg").style.visibility="visible";
+             document.getElementById("errmsg").innerHTML = "Var olan Kitap yüklenemez..."
+              });
+          </script>
+          <%} else if(error==2){ %> 
+            <script>
+              $(document).ready(function(){
+               document.getElementById("errmsg").style.visibility="visible";
+               document.getElementById("errmsg").innerHTML = "Bilgiler Eksik..."
+                });
+            </script>
+            <%} else if(error==3){ %>
+              <script>
+                $(document).ready(function(){
+                 document.getElementById("errmsg").style.visibility="visible";
+                 document.getElementById("errmsg").innerHTML = "ISBN okunamadı..."
+                  });
+              </script>
+          <% } else if(ok==1){ %> 
+            <script>
+              $(document).ready(function(){
+               document.getElementById("ok").style.visibility="visible";
+               document.getElementById("ok").innerHTML = "Yükleme Başarılı"
+                });
+            </script>
+            <% } %> 
+    </body>
+
+
+</html>

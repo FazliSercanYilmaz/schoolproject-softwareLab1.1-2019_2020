@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1"
+    />
+
+    <!-- Title -->
+    <title>..:: Kütüphane ::..</title>
+
+    <!-- Favicon -->
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Mobile Menu -->
+    <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive Table -->
+    <link rel="stylesheet" type="text/css" href="css/responsivetable.css" />
+
+    <!-- Stylesheet -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Start: Header Section -->
+    <header id="header-v1" class="navbar-wrapper">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-default">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="navbar-header">
+                  <div class="navbar-brand">
+                    <h1>
+                      <a href="/">
+                        <img src="images/libraria-logo-v1.png" alt="LIBRARIA" />
+                      </a>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <!-- Header Topbar -->
+                <div class="header-topbar hidden-sm hidden-xs">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="topbar-info"></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="topbar-links">
+                          <a <%if(auth==1){%>href="/account"<%}else{ %>href= "/admin"<% } %> > <i class="fa fa-lock"></i><%=uye["user_username"]%></a><br>
+                          <a href="/logout"><i class="fa fa-sign-out"></i>  Çıkış</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="navbar-collapse hidden-sm hidden-xs">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown ">
+                      
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/books">Kitaplık</a></a>
+                      </li>
+                    <%if (auth == 2) { %>
+                    <li class="dropdown">
+                    
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/admin">Yonetici Sayfasi</a></a>
+                    </li>
+                    <li class="dropdown">
+                    
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/upload">Kitap Ekle</a></a>
+                    </li>
+                    <% }   %>
+                      
+                    
+                    <%if (auth == 1) { %>
+                    <li class="dropdown active">
+                      <a data-toggle="dropdown " class="dropdown-toggle disabled" href="/account">uyelik</a>
+                    </li>
+                    <li class="dropdown">
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/refund">Kitap Teslim</a>
+                    </li>
+                    <% }   %>
+                   
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-menu hidden-lg hidden-md">
+              <a href="#mobile-menu"><i class="fa fa-navicon"></i></a>
+              <div id="mobile-menu">
+                <ul>
+                  <li class="mobile-title">
+                    <h4>Üyelik</h4>
+                    <a href="#" class="close"></a>
+                  </li>
+      
+                    <li>
+                      <a <%if(auth==1){%>href="/account"<%}else{ %>href= "/admin"<% } %> > <%=uye["user_username"]%></a>
+                    </li>
+                    <li>
+                      <a href="/logout">Çıkış</a>
+                    </li>
+                    
+                    <li class="mobile-title">
+                      <h4>Sayfalar</h4>
+                    </li>
+                    <li>
+                   <a href="/books">Kitaplık</a>
+                  </li>
+                  <%if (auth == 1) { %>
+                  <li>
+                    <a href="/refund">Kitap Teslim</a>
+
+                  </li>
+                  <% }   %>
+                  <%if (auth == 2) { %>
+                    <li >
+                    
+                      <a  href="/admin">Yonetici Sayfasi</a></a>
+                    </li>
+                    <li >
+                    
+                      <a href="/upload">Kitap Ekle</a></a>
+                    </li>
+                    <% }   %>
+                    
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- End: Header Section -->
+
+    <!-- Start: Page Banner -->
+    <section class="page-banner services-banner">
+      <div class="container">
+        <div class="banner-header">
+          <h2>Kitaplarım</h2>
+          <span class="underline center"></span>
+          <p class="lead">Aldığım kitaplar</p>
+        </div>
+        <div class="breadcrumb">
+          <ul>
+            <li><a href="index-2.html">Ana Sayfa</a></li>
+            <li>Üyelik</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- End: Page Banner -->
+    <!-- Start: Cart Section -->
+    <div id="content" class="site-content">
+      <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+          <div class="cart-main">
+            <div class="container">
+              <div style="visibility: hidden; "id="errmsg" class="alert alert-danger" role="alert">
+                  
+              </div>
+              <div class="row">
+                <div class="cart-head">
+                  <div class="col-xs-12 col-sm-6 account-option">
+                    <strong> <%=uye["user_username"]%> </strong>
+                    
+                  </div>
+                  <div class="clear"></div>
+                  <div class="col-xs-12 col-sm-6 library-info">
+                    <h3>Tarih:</h3>
+                   <p><%=servertime.getDate()%>/<%=servertime.getMonth()+1%>/<%=servertime.getFullYear()%><br />
+                     <%=servertime.getHours()%>:<%=servertime.getMinutes()%>:<%=servertime.getSeconds()%>
+                   </p>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="page type-page status-publish hentry">
+                    <div class="entry-content">
+                      <div class="woocommerce table-tabs" id="responsiveTabs">
+                       
+                        <div class="tab-content">
+                          <div id=" sectionA" class="tab-pane fade in active">
+                            <form
+                              method="post"
+                              action="http://libraria.demo.presstigers.com/cart-page.html"
+                            >
+                              <table
+                                class="table table-bordered shop_table cart"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th class="product-name">&nbsp;</th>
+                                    <th class="product-name">Kitap</th>
+                                    <th class="product-quantity">Alınma Tarihi</th>
+                                    <th class="product-price">Teslim Tarihi </th>
+                                      
+                                    
+                                    <th class="product-subtotal">&nbsp;</th>
+                                  </tr>
+                                </thead>
+                                <% for( let index = 0; index < kitaplar.length;
+                                index++ ) { %>
+                                <tbody>
+                                  <tr class="cart_item">
+                                    <td data-title="cbox" class="product-cbox">
+                                      <span>
+                                        <input
+                                          type="checkbox"
+                                          id="cbox3"
+                                          value="first_checkbox"
+                                        />
+                                      </span>
+                                    </td>
+                                    <td
+                                      data-title="Product"
+                                      class="product-name"
+                                    >
+                                      <span class="product-thumbnail">
+                                        <a href="#"
+                                          ><img
+                                          src="<%=kitaplar[index]["book_image"]?`data:image/png;base64,${kitaplar[index]["book_image"]}`:"/images/icon-magazine.png"%>"
+                                            alt="cart-product-1"
+                                            height="111" width="110"
+                                        /></a>
+                                      </span>
+                                      <span class="product-detail">
+                                       
+                                          <h5 class="card-title">
+                                            <%=kitaplar[index]["book_name"]%></h5>
+                                          
+                                        
+
+                                        <span
+                                          ><strong>Yazar:</strong>
+                                          <%=kitaplar[index]["book_author"]%></span>
+                                        
+                                        
+                                        <span
+                                          ><strong>ISBN:</strong> <%=
+                                          kitaplar[index]["book_isbn"]%></span >
+                                       
+                                      
+                                      </span>
+                                    </td>
+
+                                    <td
+                                      data-title="Price"
+                                      class="product-price"
+                                    >
+                                      <p>
+                                        <%  let a = new Date( kitaplar[index]["sale_date"]);
+                                        a.setDate( a.getDate() - 7 );
+                                        %> 
+                                        <%=a.getDate()%>/<%=a.getMonth()+1%>/<%=a.getFullYear()%><br />
+                                        <%=a.getHours()%>:<%=a.getMinutes()%>:<%=a.getSeconds()%>
+
+                                      </p>
+                                    </td>
+                                    <td class="product-remove">
+                                      <p>
+                                        <% let b = new Date( kitaplar[index]["sale_date"]); %> 
+                                       
+                                        <%=b.getDate()%>/<%=b.getMonth()+1%>/<%=b.getFullYear()%><br />
+                                        <%=b.getHours()%>:<%=b.getMinutes()%>:<%=b.getSeconds()%><br />
+                                        <% 
+                                        const diffTime =   b - servertime;
+                                        const diffDays = Math.ceil( diffTime / (1000 * 60 * 60 * 24));  %> 
+                                        Kalan gün: <%if (diffDays <=0){ %> Süre bitti.  <%} else {  %> <%=diffDays%> gün kaldı <% } %>                                      
+                                      </p>
+                                    </td>
+                                  </tr>
+                                </tbody>
+
+                                <% } %>
+                              </table>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- .entry-content -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <!-- End: Cart Section -->
+
+    <!-- Start: Social Network -->
+
+    <!-- End: Social Network -->
+
+    <!-- Start: Footer -->
+    <footer class="site-footer">
+      <div class="sub-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 pull-right">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End: Footer -->
+    <!-- End: Footer -->
+
+    <!-- jQuery Latest Version 1.x -->
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+    <!-- jQuery Easing -->
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Mobile Menu -->
+    <script type="text/javascript" src="js/mmenu.min.js"></script>
+
+    <!-- Harvey - State manager for media queries -->
+    <script type="text/javascript" src="js/harvey.min.js"></script>
+
+    <!-- Waypoints - Load Elements on View -->
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+    <!-- Facts Counter -->
+    <script type="text/javascript" src="js/facts.counter.min.js"></script>
+
+    <!-- MixItUp - Category Filter -->
+    <script type="text/javascript" src="js/mixitup.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+    <!-- Accordion -->
+    <script type="text/javascript" src="js/accordion.min.js"></script>
+
+    <!-- Responsive Tabs -->
+    <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
+
+    <!-- Responsive Table -->
+    <script type="text/javascript" src="js/responsive.table.min.js"></script>
+
+    <!-- Masonry -->
+    <script type="text/javascript" src="js/masonry.min.js"></script>
+
+    <!-- Carousel Swipe -->
+    <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
+
+    <!-- bxSlider -->
+    <script type="text/javascript" src="js/bxslider.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="js/main.js"></script>
+   
+ <% let kontrol=0;
+  for( let index = 0; index < kitaplar.length; index++ ) { 
+ if( new Date( kitaplar[index]["sale_date"]) - (servertime )<=0)
+    {
+    kontrol=1
+    break;
+    }
+  }
+    if(kontrol==1){ %> 
+      <script>
+        
+         document.getElementById("errmsg").style.visibility="visible";
+         document.getElementById("errmsg").innerHTML = "Süresi Bitmis Kitap Var..."
+      
+      </script>
+      <%} %>
+  </body>
+</html>

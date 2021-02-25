@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1"
+    />
+
+    <!-- Title -->
+    <title>..:: Kütüphane ::..</title>
+
+    <!-- Favicon -->
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Mobile Menu -->
+    <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+    <!-- Accordion Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.accordion.css" />
+
+    <!-- Stylesheet -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Start: Header Section -->
+    <!-- Header Topbar -->
+    <header id="header-v1" class="navbar-wrapper">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-default">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="navbar-header">
+                  <div class="navbar-brand">
+                    <h1>
+                      <a href="/">
+                        <img src="images/libraria-logo-v1.png" alt="LIBRARIA" />
+                      </a>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <!-- Header Topbar -->
+                <div class="header-topbar hidden-sm hidden-xs">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="topbar-info"></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="topbar-links">
+                          <a <%if(auth==1){%>href="/account"<%}else{ %>href= "/admin"<% } %> > <i class="fa fa-lock"></i><%=uye["user_username"]%></a><br>
+                          <a href="/logout"><i class="fa fa-sign-out"></i>  Çıkış</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="navbar-collapse hidden-sm hidden-xs">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown active">
+                      
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/books">Kitaplık</a></a>
+                      </li>
+                    <%if (auth == 2) { %>
+                    <li class="dropdown">
+                    
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/admin">Yonetici Sayfasi</a></a>
+                    </li>
+                    <li class="dropdown">
+                    
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/upload">Kitap Ekle</a></a>
+                    </li>
+                    <% }   %>
+                      
+                    
+                    <%if (auth == 1) { %>
+                    <li class="dropdown">
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/account">uyelik</a>
+                    </li>
+                    <li class="dropdown">
+                      <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/refund">Kitap Teslim</a>
+                    </li>
+                    <% }   %>
+                   
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-menu hidden-lg hidden-md">
+              <a href="#mobile-menu"><i class="fa fa-navicon"></i></a>
+              <div id="mobile-menu">
+                <ul>
+                  <li class="mobile-title">
+                    <h4>Üyelik</h4>
+                    <a href="#" class="close"></a>
+                  </li>
+      
+                    <li>
+                      <a <%if(auth==1){%>href="/account"<%}else{ %>href= "/admin"<% } %> > <%=uye["user_username"]%></a>
+                    </li>
+                    <li>
+                      <a href="/logout">Çıkış</a>
+                    </li>
+                    
+                    <li class="mobile-title">
+                      <h4>Sayfalar</h4>
+                    </li>
+                    <li>
+                   <a href="/books">Kitaplık</a>
+                  </li>
+                  <%if (auth == 1) { %>
+                  <li>
+                    <a href="/refund">Kitap Teslim</a>
+
+                  </li>
+                  <% }   %>
+                  <%if (auth == 2) { %>
+                    <li >
+                    
+                      <a  href="/admin">Yonetici Sayfasi</a></a>
+                    </li>
+                    <li >
+                    
+                      <a href="/upload">Kitap Ekle</a></a>
+                    </li>
+                    <% }   %>
+                    
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- End: Header Section -->
+
+    <!-- Start: Page Banner -->
+    <section class="page-banner services-banner">
+      <div class="container">
+        <div class="banner-header">
+          <h2>Kitaplık</h2>
+          <span class="underline center"></span>
+          <p class="lead">Kütüphanedeki Kitaplar</p>
+        </div>
+        
+      </div>
+    </section>
+    <!-- End: Page Banner -->
+
+    <!-- Start: Products Section -->
+    <div id="content" class="site-content">
+      <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+          <div class="books-media-gird">
+           
+            <div class="container">
+              <div style="visibility: hidden; "id="errmsg" class="alert alert-danger" role="alert">
+                  
+              </div>
+              <div class="row">
+                <div style="visibility: hidden; "id="ok" class="alert alert-success" role="alert">
+                  
+                </div>
+                <!-- Start: Search Section -->
+                <section class="search-filters">
+                  <div class="container">
+                    <div class="filter-box">
+                      <h3>Kütüphanede aradığın kitabı bulmak için?</h3>
+                      <form
+                        action="/search"
+                        method="post"
+                      >
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label class="sr-only" for="keywords"
+                              >Search by Keyword</label
+                            >
+                            <input
+                              class="form-control"
+                              placeholder="ISBN Numarası"
+                              id="keywords"
+                              name="isbnNo"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-2 col-sm-6">
+                          <div class="form-group">
+                            <input
+                              class="form-control"
+                              type="submit"
+                              value="ARA"
+                            />
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </section>
+                <!-- End: Search Section -->
+              </div>
+              
+              <div class="row">
+                <div class="col-md-9 col-md-pull-0">
+                  <div class="filter-options margin-list"></div>
+                  <div class="books-gird">
+                    <ul>
+                      <% for( let index = 0; index < kitaplar.length; index++ )
+                      { %>
+                      <li>
+                        <figure>
+                          <img
+                         style=" width: 330px !important;heigth:439px !important;"
+                            src="<%=kitaplar[index]["book_image"]?`data:image/png;base64,${kitaplar[index]["book_image"]}`:"/images/icon-magazine.png"%>"
+                            alt="Book"
+                          />
+                          <figcaption>
+                            <p>
+                              <strong
+                                ><%=kitaplar[index]["book_name"]%>
+                              </strong>
+                            </p>
+                            <p>
+                              <strong>Author:</strong>
+                              <%=kitaplar[index]["book_author"]%>
+                            </p>
+                          </figcaption>
+                        </figure>
+
+                        <div class="single-book-box">
+                          <div class="post-detail">
+                            <div class="optional-links"></div>
+                            <header class="entry-header">
+                              <h3 class="entry-title">
+                              
+                                <%=kitaplar[index]["book_name"]%>
+                            
+                              </h3>
+                              <ul>
+                                <li>
+                                  <strong>Yazar:</strong> <%=kitaplar[index]["book_author"]%>
+                                </li>
+                                <li><strong>ISBN:</strong> <%=kitaplar[index]["book_isbn"]%></li>
+                              </ul>
+                            </header>
+                            <div class="entry-content"></div>
+                            <footer class="entry-footer">
+                              <form action="/books" method="post">
+                                <button <% if(auth==2){%>style="visibility: hidden;"<% } %> 
+                                  type="submit"
+                                  name="kitap_id"
+                                  value= "<%=kitaplar[index]["book_id"]%>"
+                                  class="btn btn-primary"
+                                >
+                                  Kitabı al
+                                </button>
+                              </form>
+                            </footer>
+                          </div>
+                        </div>
+                      </li>
+                      <% } %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-3 col-md-pull-9"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <!-- End: Products Section -->
+
+    <!-- Start: Footer -->
+    <footer class="site-footer">
+      <div class="sub-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 pull-right">
+              <ul>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End: Footer -->
+
+    <!-- jQuery Latest Version 1.x -->
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+    <!-- jQuery Easing -->
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Mobile Menu -->
+    <script type="text/javascript" src="js/mmenu.min.js"></script>
+
+    <!-- Harvey - State manager for media queries -->
+    <script type="text/javascript" src="js/harvey.min.js"></script>
+
+    <!-- Waypoints - Load Elements on View -->
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+    <!-- Facts Counter -->
+    <script type="text/javascript" src="js/facts.counter.min.js"></script>
+
+    <!-- MixItUp - Category Filter -->
+    <script type="text/javascript" src="js/mixitup.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+    <!-- Accordion -->
+    <script type="text/javascript" src="js/accordion.min.js"></script>
+
+    <!-- Responsive Tabs -->
+    <script type="text/javascript" src="js/responsive.tabs.min.js"></script>
+
+    <!-- Responsive Table -->
+    <script type="text/javascript" src="js/responsive.table.min.js"></script>
+
+    <!-- Masonry -->
+    <script type="text/javascript" src="js/masonry.min.js"></script>
+
+    <!-- Carousel Swipe -->
+    <script type="text/javascript" src="js/carousel.swipe.min.js"></script>
+
+    <!-- bxSlider -->
+    <script type="text/javascript" src="js/bxslider.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <% if(error==1){ %> 
+      <script>
+        $(document).ready(function(){
+         document.getElementById("errmsg").style.visibility="visible";
+         document.getElementById("errmsg").innerHTML = "Ücten fazla kitap alamazsınız..."
+          });
+      </script>
+      <% } %> 
+      <% if(error==2){ %> 
+        <script>
+          $(document).ready(function(){
+           document.getElementById("errmsg").style.visibility="visible";
+           document.getElementById("errmsg").innerHTML = "Lütfen teslim tarihi geçmiş kitapları bırakınız..."
+            });
+        </script>
+        <% } %> 
+        <% if(error==3){ %> 
+          <script>
+            $(document).ready(function(){
+             document.getElementById("errmsg").style.visibility="visible";
+             document.getElementById("errmsg").innerHTML = "Kitap önceden alinmis"
+              });
+          </script>
+          <% } %> 
+          <% if(error==4){ %> 
+            <script>
+              $(document).ready(function(){
+               document.getElementById("errmsg").style.visibility="visible";
+               document.getElementById("errmsg").innerHTML = "Kitap bulunamadı..."
+                });
+            </script>
+            <% } %> 
+          <% if(ok==1){ %> 
+            <script>
+              $(document).ready(function(){
+               document.getElementById("ok").style.visibility="visible";
+               document.getElementById("ok").innerHTML = "Kitap alınmıştır"
+                });
+            </script>
+            <% } %> 
+            <% if(ok==2){ %> 
+              <script>
+                $(document).ready(function(){
+                 document.getElementById("ok").style.visibility="visible";
+                 document.getElementById("ok").innerHTML = "Kitap Bulundu..."
+                  });
+              </script>
+              <% } %> 
+          <script> 
+            $(document).ready(function(){
+            setTimeout(()=>{
+              document.getElementById("errmsg").style.visibility="hidden"        }, 5000);
+            });
+          </script>
+  </body>
+
+</html>

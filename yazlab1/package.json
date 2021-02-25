@@ -1,0 +1,22 @@
+{
+  "name": "proje",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "crypto-js": "^4.0.0",
+    "date-and-time": "^0.13.1",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "node-isbn": "^1.4.0",
+    "tesseract.js": "^2.1.1",
+    "tmp": "^0.1.0"
+  }
+}
